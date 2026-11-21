@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data:; frame-src https://www.youtube-nocookie.com; connect-src 'self'; media-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>معتصم النمراوي | Portfolio</title>
+  <meta name="description" content="معتصم النمراوي — مونتاج، موشن جرافيك وجرافيك ديزاين. Moatasem Al-Namrawi — Video Editing, Motion Graphics & Graphic Design.">
+  <meta property="og:title" content="معتصم النمراوي | Portfolio">
+  <meta property="og:description" content="مونتاج • موشن جرافيك • جرافيك ديزاين">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://motasmn.github.io/">
+  <meta property="og:image" content="https://motasmn.github.io/assets/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://motasmn.github.io/">
+  <meta name="theme-color" content="#101114">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='16' fill='%23101114'/><circle cx='32' cy='32' r='12' fill='%23F2A541'/></svg>">
+  <link rel="preload" href="assets/fonts/alexandria-arabic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/video/v4.webp" as="image" fetchpriority="high">
+  <link rel="stylesheet" href="style.css?v=5">
+</head>
+<body>
+  <header class="top">
+    <a class="logo" href="#home" data-i18n="logo">معتصم<span>.</span></a>
+    <nav class="nav">
+      <a href="#work" data-i18n="navWork">أعمالي</a>
+      <a href="#about" data-i18n="navAbout">نبذة</a>
+      <a href="#contact" data-i18n="navContact">تواصل</a>
+    </nav>
+    <button class="lang" id="lang" type="button" title="English / عربي">EN</button>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <p class="eyebrow reveal" data-i18n="heroEyebrow">مونتاج • موشن جرافيك • جرافيك ديزاين</p>
+      <h1 class="reveal" data-i18n="heroTitle">بحوّل فكرتك لصورة <em>بتعلق بالذاكرة</em></h1>
+      <p class="lead reveal" data-i18n="heroLead">معتصم النمراوي — صانع محتوى بصري من الأردن.</p>
+      <div class="cta reveal">
+        <a class="btn primary" href="#work" data-i18n="heroBtnWork">شوف أعمالي</a>
+        <a class="btn ghost wa-link" href="#" target="_blank" rel="noopener" data-i18n="heroBtnTalk">احكي معي</a>
+      </div>
+      <div class="slider reveal" id="slider" aria-roledescription="carousel">
+        <div class="slides" id="slides" aria-live="polite"></div>
+        <div class="sthumbs" id="sthumbs" role="tablist"></div>
+      </div>
+    </section>
+
+    <section class="work" id="work">
+      <div class="head reveal">
+        <h2 data-i18n="workTitle">أعمالي</h2>
+        <div class="tabs" role="tablist">
+          <button class="tab active" role="tab" aria-selected="true" data-tab="video" data-i18n="tabVideo">مونتاج وموشن</button>
+          <button class="tab" role="tab" aria-selected="false" data-tab="graphic" data-i18n="tabGraphic">جرافيك ديزاين</button>
+        </div>
+      </div>
+
+      <div class="panel active" id="panel-video" role="tabpanel">
+        <div class="filters" id="filters">
+          <button class="chip active" data-filter="all" data-i18n="fAll">الكل</button>
+          <button class="chip" data-filter="edit" data-i18n="fEdit">مونتاج</button>
+          <button class="chip" data-filter="motion" data-i18n="fMotion">موشن</button>
+        </div>
+        <div class="grid videos" id="videos"></div>
+      </div>
+
+      <div class="panel" id="panel-graphic" role="tabpanel" hidden>
+        <div class="grid graphic" id="graphic"></div>
+        <div class="more"><a class="btn ghost behance-link" href="#" target="_blank" rel="noopener" data-i18n="behanceAll">كل الأعمال على Behance ↗</a></div>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="about-inner reveal">
+        <h2 data-i18n="aboutTitle">نبذة</h2>
+        <p class="bio" data-i18n="bio">معتصم النمراوي — صانع محتوى بصري (تصوير، مونتاج، وموشن جرافيك). أصنع فيديوهات وتصاميم تجمع بين الدقة الفنية والهوية البصرية المؤثرة لتقديم رسالتك بأفضل صورة.</p>
+        <ul class="skills">
+          <li data-i18n="s1">تصوير</li>
+          <li data-i18n="s2">مونتاج</li>
+          <li data-i18n="s3">موشن جرافيك</li>
+          <li data-i18n="s4">جرافيك ديزاين</li>
+          <li data-i18n="s5">هوية بصرية</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="contact-inner reveal">
+        <h2 data-i18n="contactTitle">عندك مشروع؟ <em>خلينا نحكي.</em></h2>
+        <p data-i18n="contactLead">بردّ عليك بأسرع وقت — واتساب أو إيميل، اللي بريحك.</p>
+        <div class="cta">
+          <a class="btn primary wa-link" href="#" target="_blank" rel="noopener" data-i18n="btnWa">واتساب</a>
+          <a class="btn ghost mail-link" href="#" data-i18n="btnMail">إيميل</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <span>© <span id="year"></span> <span data-i18n="footName">معتصم النمراوي</span></span>
+    <a class="behance-link" href="#" target="_blank" rel="noopener">Behance</a>
+  </footer>
+
+  <a class="wa-float wa-link" href="#" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.4.8 3.2.6a2.8 2.8 0 0 0 1.8-1.3 2.3 2.3 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3Z"/></svg>
+  </a>
+
+  <div class="modal" id="modal" hidden>
+    <div class="modal-box" role="dialog" aria-modal="true">
+      <button class="close" id="close" type="button" aria-label="Close">✕</button>
+      <div class="frame" id="frame"></div>
+    </div>
+  </div>
+
+  <script src="data.js?v=5"></script>
+  <script src="app.js?v=5"></script>
+</body>
+</html>

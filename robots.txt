@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://motasmn.github.io/sitemap.xml
