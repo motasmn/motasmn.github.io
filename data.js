@@ -39,14 +39,9 @@ const GRAPHIC = [
   { id: "252605225", slug: "_",    ar: "خطوتك الأولى نحو التداول",   en: "Your First Step into Trading" },
   { id: "253841933", slug: "_",    ar: "دفتر تخرج",                 en: "Graduation Book" },
   { id: "248387551", slug: "_",    ar: "تحذير: في قنبلة",            en: "Warning: Bomb Inside" },
-  { id: "252605177", slug: "_",    ar: "سر التداول",                 en: "The Secret of Trading" },
   { id: "252605203", slug: "-(-)", ar: "التحليل الفني",              en: "Technical Analysis" },
-  { id: "252605147", slug: "-(-)", ar: "إدارة المخاطر",              en: "Risk Management" },
-  { id: "252605119", slug: "_",    ar: "تعلّم الاستراتيجيات معنا",    en: "Learn Strategies With Us" },
   { id: "248387627", slug: "_",    ar: "تصميم سوشل ميديا",           en: "Social Media Design" },
   { id: "252228069", slug: "-3",   ar: "إعلان بداية الصيف",          en: "Summer Kickoff Ad" },
-  { id: "252228035", slug: "_",    ar: "هوية بصرية",                 en: "Visual Identity" },
-  { id: "248387679", slug: "_",    ar: "بوستر سرعة",                 en: "Speed Poster" },
 ];
 
 /* التواصل */
