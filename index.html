@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data:; frame-src https://www.youtube-nocookie.com; connect-src 'self'; media-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://hits.sh; frame-src https://www.youtube-nocookie.com; connect-src 'self'; media-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <title>معتصم النمراوي | Portfolio</title>
   <meta name="description" content="معتصم النمراوي — مونتاج، موشن جرافيك وجرافيك ديزاين. Moatasem Al-Namrawi — Video Editing, Motion Graphics & Graphic Design.">
@@ -20,9 +20,10 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='16' fill='%23101114'/><circle cx='32' cy='32' r='12' fill='%23F2A541'/></svg>">
   <link rel="preload" href="assets/fonts/alexandria-arabic.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/video/v4.webp" as="image" fetchpriority="high">
-  <link rel="stylesheet" href="style.css?v=8">
+  <link rel="stylesheet" href="style.css?v=10">
 </head>
 <body>
+  <div class="grain" aria-hidden="true"></div>
   <header class="top">
     <a class="logo" href="#home" data-i18n="logo">معتصم<span>.</span></a>
     <nav class="nav">
@@ -49,9 +50,11 @@
       </div>
     </section>
 
+    <div class="marquee" aria-hidden="true"><div class="mq-track" id="mq"></div></div>
+
     <section class="work" id="work">
       <div class="head reveal">
-        <h2 data-i18n="workTitle">أعمالي</h2>
+        <span class="kicker">01</span><h2 data-i18n="workTitle">أعمالي</h2>
         <div class="tabs" role="tablist">
           <button class="tab active" role="tab" aria-selected="true" data-tab="video" data-i18n="tabVideo">مونتاج وموشن</button>
           <button class="tab" role="tab" aria-selected="false" data-tab="graphic" data-i18n="tabGraphic">جرافيك ديزاين</button>
@@ -76,7 +79,7 @@
     <section class="tools" id="tools">
       <div class="head reveal">
         <div>
-          <h2 data-i18n="toolsTitle">أدوات بتسرّع شغلك</h2>
+          <span class="kicker">02</span><h2 data-i18n="toolsTitle">أدوات بتسرّع شغلك</h2>
           <p class="sub" data-i18n="toolsLead">إضافات صغيرة للمونتيرية والمصممين، بتوفّر ساعات من الشغل المتكرر.</p>
         </div>
       </div>
@@ -90,7 +93,7 @@
 
     <section class="about" id="about">
       <div class="about-inner reveal">
-        <h2 data-i18n="aboutTitle">نبذة</h2>
+        <span class="kicker">03</span><h2 data-i18n="aboutTitle">نبذة</h2>
         <p class="bio" data-i18n="bio">معتصم النمراوي — صانع محتوى بصري (تصوير، مونتاج، وموشن جرافيك). أصنع فيديوهات وتصاميم تجمع بين الدقة الفنية والهوية البصرية المؤثرة لتقديم رسالتك بأفضل صورة.</p>
         <ul class="skills">
           <li data-i18n="s1">تصوير</li>
@@ -139,7 +142,7 @@
     </div>
   </div>
 
-  <script src="data.js?v=8"></script>
-  <script src="app.js?v=8"></script>
+  <script src="data.js?v=10"></script>
+  <script src="app.js?v=10"></script>
 </body>
 </html>

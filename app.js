@@ -14,7 +14,7 @@ const T = {
     contactTitle: "عندك مشروع؟ <em>خلينا نحكي.</em>",
     contactLead: "بردّ عليك بأسرع وقت — واتساب أو إيميل، اللي بريحك.",
     btnWa: "واتساب", btnMail: "إيميل", footName: "معتصم النمراوي",
-    soon: "قريباً", navTools: "أدوات", bHome: "الرئيسية", toolsTitle: "أدوات بتسرّع شغلك", toolsLead: "إضافات صغيرة للمونتيرية والمصممين، بتوفّر ساعات من الشغل المتكرر.", perk1: "بتشتغل على دافنشي المجاني", perk2: "أسعار رمزية", perk3: "دعم بالعربي", pSoon: "قريباً", pNotify: "بلّغني لما تنزل", pBuy: "اشتري الآن", pOrder: "اطلبها", pNotifyMsg: "مرحبا معتصم، بدي تبلغني لما تنزل أداة", pOrderMsg: "مرحبا معتصم، بدي أشتري أداة", slBadge: "الأبرز", slPlay: "شغّل الفيديو ▶", slView: "شوف التصميم ↗", edit: "مونتاج", motion: "موشن",
+    soon: "قريباً", mq: ["مونتاج", "موشن جرافيك", "جرافيك ديزاين", "هوية بصرية", "ريلز", "تصوير"], navTools: "أدوات", bHome: "الرئيسية", toolsTitle: "أدوات بتسرّع شغلك", toolsLead: "إضافات صغيرة للمونتيرية والمصممين، بتوفّر ساعات من الشغل المتكرر.", perk1: "بتشتغل على دافنشي المجاني", perk2: "أسعار رمزية", perk3: "دعم بالعربي", pSoon: "قريباً", pNotify: "بلّغني لما تنزل", pBuy: "اشتري الآن", pOrder: "اطلبها", pNotifyMsg: "مرحبا معتصم، بدي تبلغني لما تنزل أداة", pOrderMsg: "مرحبا معتصم، بدي أشتري أداة", slBadge: "الأبرز", slPlay: "شغّل الفيديو ▶", slView: "شوف التصميم ↗", edit: "مونتاج", motion: "موشن",
     waMsg: "مرحبا معتصم، شفت موقعك وحابب أحكي معك عن مشروع",
     title: "معتصم النمراوي | Portfolio",
   },
@@ -33,7 +33,7 @@ const T = {
     contactTitle: "Got a project? <em>Let's talk.</em>",
     contactLead: "I reply fast — WhatsApp or email, whichever suits you.",
     btnWa: "WhatsApp", btnMail: "Email", footName: "Moatasem Al-Namrawi",
-    soon: "Coming soon", navTools: "Tools", bHome: "Home", toolsTitle: "Tools that speed up your work", toolsLead: "Small add-ons for editors and designers that save hours of repetitive work.", perk1: "Works on DaVinci Resolve FREE", perk2: "Fair prices", perk3: "Support in Arabic", pSoon: "Coming soon", pNotify: "Notify me", pBuy: "Buy now", pOrder: "Order", pNotifyMsg: "Hi Moatasem, let me know when this tool is out:", pOrderMsg: "Hi Moatasem, I want to buy", slBadge: "Featured", slPlay: "Play video ▶", slView: "View design ↗", edit: "Editing", motion: "Motion",
+    soon: "Coming soon", mq: ["Video Editing", "Motion Graphics", "Graphic Design", "Visual Identity", "Reels", "Videography"], navTools: "Tools", bHome: "Home", toolsTitle: "Tools that speed up your work", toolsLead: "Small add-ons for editors and designers that save hours of repetitive work.", perk1: "Works on DaVinci Resolve FREE", perk2: "Fair prices", perk3: "Support in Arabic", pSoon: "Coming soon", pNotify: "Notify me", pBuy: "Buy now", pOrder: "Order", pNotifyMsg: "Hi Moatasem, let me know when this tool is out:", pOrderMsg: "Hi Moatasem, I want to buy", slBadge: "Featured", slPlay: "Play video ▶", slView: "View design ↗", edit: "Editing", motion: "Motion",
     waMsg: "Hi Moatasem, I saw your portfolio and I'd like to talk about a project",
     title: "Moatasem Al-Namrawi | Portfolio",
   },
@@ -159,6 +159,8 @@ function applyLang() {
   renderGraphic();
   renderSlider();
   renderProducts();
+  const row = t.mq.map((x) => `<span>${esc(x)}</span><i>✦</i>`).join("");
+  $("#mq").innerHTML = row + row + row + row;
 }
 
 $("#lang").addEventListener("click", () => {
@@ -276,3 +278,27 @@ document.querySelectorAll("main section[id]").forEach((s) => secIO.observe(s));
 const markLoaded = (img) => img.closest(".thumb, .g-card")?.classList.add("loaded");
 document.addEventListener("load", (e) => { if (e.target.tagName === "IMG") markLoaded(e.target); }, true);
 setInterval(() => document.querySelectorAll(".thumb img, .g-card img").forEach((i) => i.complete && i.naturalWidth && markLoaded(i)), 1500);
+
+/* card spotlight: soft light follows the pointer (desktop) */
+document.addEventListener("pointermove", (e) => {
+  const c = e.target.closest(".product, .card, .g-card"); if (!c) return;
+  const r = c.getBoundingClientRect();
+  c.style.setProperty("--mx", e.clientX - r.left + "px");
+  c.style.setProperty("--my", e.clientY - r.top + "px");
+}, { passive: true });
+
+/* visit counter (hits.sh, no account): page view + key actions, live site only */
+const track = (k) => {
+  if (location.hostname !== "motasmn.github.io") return;
+  const i = new Image(); i.referrerPolicy = "no-referrer";
+  i.src = "https://hits.sh/motasmn.github.io" + (k ? "/" + k : "") + ".svg";
+};
+track("");
+document.addEventListener("click", (e) => {
+  const a = e.target.closest("a, button"); if (!a) return;
+  if (a.matches(".wa-link") || (a.href || "").includes("wa.me/") && !a.closest(".product")) track("whatsapp");
+  else if (a.closest(".product")) track(a.classList.contains("primary") ? "buy" : "notify");
+  else if (a.matches(".mail-link")) track("email");
+  else if (a.matches("button.thumb, button.thumb-cta")) track("video");
+  else if (a.matches(".g-card, .behance-link")) track("behance");
+});
