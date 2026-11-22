@@ -44,6 +44,38 @@ const GRAPHIC = [
   { id: "252228069", slug: "-3",   ar: "إعلان بداية الصيف",          en: "Summer Kickoff Ad" },
 ];
 
+/* الأدوات للبيع
+   status = "soon" قريباً (زر: بلّغني)  |  "available" متوفر
+   buy    = رابط صفحة الدفع (Lemon Squeezy / Payhip ...). إذا فاضي، الطلب بيكون بالواتساب
+   icon   = wave | beat | box | frame | subs | guide
+   badge  = شارة اختيارية فوق البطاقة */
+const PRODUCTS = [
+  { id: "quietcut", icon: "wave", price: 9, status: "soon", buy: "", badgeAr: "الأقوى", badgeEn: "Flagship",
+    ar: "QuietCut — قص الصمت", en: "QuietCut — Silence Cutter",
+    descAr: "بتحطله فيديو الكلام، وبيطلعلك تايملاين مقصوص جاهز بدون فراغات.", descEn: "Drop in a talking video, get a cut timeline with the silences removed.",
+    ptsAr: ["بيكتشف الصمت تلقائياً", "تايملاين بكبسة وحدة", "بيوفّر ساعات بكل فيديو"], ptsEn: ["Auto silence detection", "One-click timeline import", "Saves hours per video"] },
+  { id: "subsfixer", icon: "subs", price: 8, status: "soon", buy: "",
+    ar: "Arabic Subs Fixer", en: "Arabic Subs Fixer",
+    descAr: "ترجمة عربية بتطلع صح بدافنشي: الاتجاه والأرقام والتشكيل.", descEn: "Arabic subtitles that render right in Resolve: direction, numbers, diacritics.",
+    ptsAr: ["بيصلّح ملفات SRT", "ستايلات نص جاهزة", "مخصص للعربي"], ptsEn: ["Fixes SRT files", "Ready text styles", "Built for Arabic"] },
+  { id: "toolbox", icon: "box", price: 7, status: "soon", buy: "",
+    ar: "Editor's Toolbox", en: "Editor's Toolbox",
+    descAr: "سكربتات بكبسة وحدة للخطوات المملة اللي بتتكرر بكل مشروع.", descEn: "One-click scripts for the boring steps you repeat every project.",
+    ptsAr: ["ترتيب الميديا", "تلوين الكليبات", "فصول يوتيوب من الماركرز"], ptsEn: ["Organize media", "Color-code clips", "YouTube chapters from markers"] },
+  { id: "beatmarker", icon: "beat", price: 5, status: "soon", buy: "",
+    ar: "BeatMarker — ماركرز عالإيقاع", en: "BeatMarker",
+    descAr: "بتحطله الأغنية، وبيحط ماركر على كل بيت عشان تقص عالإيقاع.", descEn: "Drop in the song, get a marker on every beat for rhythm cuts.",
+    ptsAr: ["كشف الإيقاع تلقائياً", "مثالي للريلز", "بيشتغل مع أي أغنية"], ptsEn: ["Auto beat detection", "Perfect for reels", "Works with any track"] },
+  { id: "safezone", icon: "frame", price: 3, status: "soon", buy: "",
+    ar: "Safe-Zone Pack", en: "Safe-Zone Pack",
+    descAr: "حدود واجهة تيك توك وريلز وشورتس عشان نصّك ما يختفي تحت الأزرار.", descEn: "TikTok, Reels and Shorts UI guides so your text never hides under buttons.",
+    ptsAr: ["9:16 و 4:5", "دبل كليك وبيشتغل", "شفاف وخفيف"], ptsEn: ["9:16 and 4:5", "Double-click install", "Transparent & light"] },
+  { id: "coach", icon: "guide", price: 12, status: "soon", buy: "",
+    ar: "Resolve Coach", en: "Resolve Coach",
+    descAr: "دليل تفاعلي: «بدي أعمل X» وبيعطيك الخطوات والاختصارات بالضبط.", descEn: "Interactive guide: \"I want to do X\" → exact steps and shortcuts.",
+    ptsAr: ["وصفات جاهزة", "بالعربي", "للمبتدئين والمحترفين"], ptsEn: ["Ready recipes", "In Arabic", "Beginner to pro"] },
+];
+
 /* التواصل */
 const CONTACT = {
   whatsapp: "962785730069",

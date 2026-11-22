@@ -14,7 +14,7 @@ const T = {
     contactTitle: "عندك مشروع؟ <em>خلينا نحكي.</em>",
     contactLead: "بردّ عليك بأسرع وقت — واتساب أو إيميل، اللي بريحك.",
     btnWa: "واتساب", btnMail: "إيميل", footName: "معتصم النمراوي",
-    soon: "قريباً", slBadge: "الأبرز", slPlay: "شغّل الفيديو ▶", slView: "شوف التصميم ↗", edit: "مونتاج", motion: "موشن",
+    soon: "قريباً", navTools: "أدوات", bHome: "الرئيسية", toolsTitle: "أدوات بتسرّع شغلك", toolsLead: "إضافات صغيرة للمونتيرية والمصممين، بتوفّر ساعات من الشغل المتكرر.", perk1: "بتشتغل على دافنشي المجاني", perk2: "أسعار رمزية", perk3: "دعم بالعربي", pSoon: "قريباً", pNotify: "بلّغني لما تنزل", pBuy: "اشتري الآن", pOrder: "اطلبها", pNotifyMsg: "مرحبا معتصم، بدي تبلغني لما تنزل أداة", pOrderMsg: "مرحبا معتصم، بدي أشتري أداة", slBadge: "الأبرز", slPlay: "شغّل الفيديو ▶", slView: "شوف التصميم ↗", edit: "مونتاج", motion: "موشن",
     waMsg: "مرحبا معتصم، شفت موقعك وحابب أحكي معك عن مشروع",
     title: "معتصم النمراوي | Portfolio",
   },
@@ -33,7 +33,7 @@ const T = {
     contactTitle: "Got a project? <em>Let's talk.</em>",
     contactLead: "I reply fast — WhatsApp or email, whichever suits you.",
     btnWa: "WhatsApp", btnMail: "Email", footName: "Moatasem Al-Namrawi",
-    soon: "Coming soon", slBadge: "Featured", slPlay: "Play video ▶", slView: "View design ↗", edit: "Editing", motion: "Motion",
+    soon: "Coming soon", navTools: "Tools", bHome: "Home", toolsTitle: "Tools that speed up your work", toolsLead: "Small add-ons for editors and designers that save hours of repetitive work.", perk1: "Works on DaVinci Resolve FREE", perk2: "Fair prices", perk3: "Support in Arabic", pSoon: "Coming soon", pNotify: "Notify me", pBuy: "Buy now", pOrder: "Order", pNotifyMsg: "Hi Moatasem, let me know when this tool is out:", pOrderMsg: "Hi Moatasem, I want to buy", slBadge: "Featured", slPlay: "Play video ▶", slView: "View design ↗", edit: "Editing", motion: "Motion",
     waMsg: "Hi Moatasem, I saw your portfolio and I'd like to talk about a project",
     title: "Moatasem Al-Namrawi | Portfolio",
   },
@@ -105,6 +105,37 @@ function goSlide(i) {
   [...$("#sthumbs").children].forEach((el, k) => { el.classList.toggle("on", k === slideIdx); el.setAttribute("aria-selected", k === slideIdx); });
 }
 
+const ICONS = {
+  wave: '<path d="M3 12h2M7 8v8M11 5v14M15 9v6M19 7v10M21 12h0"/>',
+  beat: '<path d="M4 18V6M9 18v-5M14 18V9M19 18v-8"/><circle cx="4" cy="5" r="1.5"/><circle cx="14" cy="8" r="1.5"/>',
+  box: '<path d="M3 8h18v11H3zM8 8V5h8v3M3 13h18"/>',
+  frame: '<rect x="7" y="3" width="10" height="18" rx="2"/><path d="M9 7h6M9 17h3"/>',
+  subs: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 15h4M13 15h4M7 11h10"/>',
+  guide: '<circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5z"/>',
+};
+function renderProducts() {
+  const t = T[lang];
+  $("#products").innerHTML = PRODUCTS.map((p) => {
+    const name = p[lang], desc = lang === "ar" ? p.descAr : p.descEn, pts = (lang === "ar" ? p.ptsAr : p.ptsEn) || [];
+    const badge = lang === "ar" ? p.badgeAr : p.badgeEn;
+    const soon = p.status !== "available";
+    let href, label;
+    if (soon) { href = `https://wa.me/${CONTACT.whatsapp}?text=${encodeURIComponent(t.pNotifyMsg + " " + name)}`; label = t.pNotify; }
+    else if (/^https:\/\//.test(p.buy || "")) { href = p.buy; label = t.pBuy; }
+    else { href = `https://wa.me/${CONTACT.whatsapp}?text=${encodeURIComponent(t.pOrderMsg + " " + name)}`; label = t.pOrder; }
+    return `<article class="product${badge ? " hot" : ""}">
+      ${badge ? `<span class="p-badge">${esc(badge)}</span>` : ""}
+      <div class="p-top"><span class="p-icon"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[p.icon] || ICONS.box}</svg></span>
+        ${soon ? `<span class="p-status">${t.pSoon}</span>` : ""}</div>
+      <h3>${esc(name)}</h3>
+      <p class="p-desc">${esc(desc)}</p>
+      <ul class="p-pts">${pts.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>
+      <div class="p-foot"><span class="p-price"><small>$</small>${Number(p.price) || ""}</span>
+        <a class="btn ${soon ? "ghost" : "primary"}" href="${esc(href)}" target="_blank" rel="noopener">${label}</a></div>
+    </article>`;
+  }).join("");
+}
+
 function renderGraphic() {
   $("#graphic").innerHTML = GRAPHIC.map((g) => `
     <a class="g-card" href="https://www.behance.net/gallery/${esc(g.id)}/${encodeURIComponent(g.slug)}" target="_blank" rel="noopener">
@@ -127,6 +158,7 @@ function applyLang() {
   renderVideos();
   renderGraphic();
   renderSlider();
+  renderProducts();
 }
 
 $("#lang").addEventListener("click", () => {
@@ -155,6 +187,13 @@ $("#filters").addEventListener("click", (e) => {
 /* video modal */
 const modal = $("#modal"), frame = $("#frame"), box = $(".modal-box");
 let lastFocus;
+let curVid = -1;
+function playVid(i) {
+  const list = VIDEOS.filter((v) => okId(v.id)); if (!list.length) return;
+  curVid = (i + list.length) % list.length; const v = list[curVid];
+  box.classList.toggle("tall", v.shape === "tall");
+  frame.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${esc(v.id)}?autoplay=1&rel=0&modestbranding=1&playsinline=1" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" title="video"></iframe>`;
+}
 const openVideo = (e) => {
   const b = e.target.closest("button.thumb, button.thumb-cta"); if (!b || !okId(b.dataset.id)) return;
   lastFocus = b;
@@ -162,8 +201,16 @@ const openVideo = (e) => {
   frame.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${b.dataset.id}?autoplay=1&rel=0&modestbranding=1&playsinline=1" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" title="video"></iframe>`;
   modal.hidden = false;
   document.body.style.overflow = "hidden";
+  curVid = VIDEOS.filter((v) => okId(v.id)).findIndex((v) => v.id === b.dataset.id);
   $("#close").focus();
 };
+$("#mprev").addEventListener("click", () => playVid(curVid + (lang === "ar" ? 1 : -1)));
+$("#mnext").addEventListener("click", () => playVid(curVid + (lang === "ar" ? -1 : 1)));
+document.addEventListener("keydown", (e) => {
+  if (modal.hidden) return;
+  if (e.key === "ArrowLeft") $("#mprev").click();
+  if (e.key === "ArrowRight") $("#mnext").click();
+});
 $("#videos").addEventListener("click", openVideo);
 $("#slides").addEventListener("click", openVideo);
 
@@ -214,3 +261,18 @@ document.addEventListener("pointerdown", (e) => {
   el.appendChild(s);
   s.addEventListener("animationend", () => s.remove());
 });
+
+/* header: solid on scroll + active section in navs */
+const hdr = document.querySelector(".top");
+addEventListener("scroll", () => hdr.classList.toggle("scrolled", scrollY > 30), { passive: true });
+const navLinks = [...document.querySelectorAll(".nav a, .bnav a")];
+const secIO = new IntersectionObserver((es) => es.forEach((x) => {
+  if (!x.isIntersecting) return;
+  navLinks.forEach((a) => a.classList.toggle("active", a.getAttribute("href") === "#" + x.target.id));
+}), { rootMargin: "-45% 0px -50% 0px" });
+document.querySelectorAll("main section[id]").forEach((s) => secIO.observe(s));
+
+/* image shimmer until loaded */
+const markLoaded = (img) => img.closest(".thumb, .g-card")?.classList.add("loaded");
+document.addEventListener("load", (e) => { if (e.target.tagName === "IMG") markLoaded(e.target); }, true);
+setInterval(() => document.querySelectorAll(".thumb img, .g-card img").forEach((i) => i.complete && i.naturalWidth && markLoaded(i)), 1500);
