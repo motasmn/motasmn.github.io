@@ -137,11 +137,14 @@ function renderProducts() {
 }
 
 function renderGraphic() {
-  $("#graphic").innerHTML = GRAPHIC.map((g) => `
-    <a class="g-card" href="https://www.behance.net/gallery/${esc(g.id)}/${encodeURIComponent(g.slug)}" target="_blank" rel="noopener">
-      <img src="assets/graphic/${esc(g.id)}.webp" alt="${esc(g[lang])}" loading="lazy" width="600" height="469">
-      <figcaption>${esc(g[lang])}</figcaption>
-    </a>`).join("");
+  $("#graphic").innerHTML = GRAPHIC.map((g) => {
+    const tall = g.shape === "tall" ? " tall" : "";
+    const inner = `<img src="assets/graphic/${esc(g.id)}.webp" alt="${esc(g[lang])}" loading="lazy" width="600" height="${g.shape === "tall" ? 1066 : 469}">
+      <figcaption>${esc(g[lang])}</figcaption>`;
+    if (okId(g.video)) return `<button class="g-card g-video${tall}" data-id="${esc(g.video)}" data-shape="tall" aria-label="${esc(g[lang])}">${inner}<span class="play">${PLAY}</span></button>`;
+    if (/^\d+$/.test(g.id)) return `<a class="g-card${tall}" href="https://www.behance.net/gallery/${esc(g.id)}/${encodeURIComponent(g.slug)}" target="_blank" rel="noopener">${inner}</a>`;
+    return `<div class="g-card${tall}">${inner}</div>`;
+  }).join("");
 }
 
 function applyLang() {
@@ -197,7 +200,7 @@ function playVid(i) {
   frame.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${esc(v.id)}?autoplay=1&rel=0&modestbranding=1&playsinline=1" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" title="video"></iframe>`;
 }
 const openVideo = (e) => {
-  const b = e.target.closest("button.thumb, button.thumb-cta"); if (!b || !okId(b.dataset.id)) return;
+  const b = e.target.closest("button.thumb, button.thumb-cta, button.g-video"); if (!b || !okId(b.dataset.id)) return;
   lastFocus = b;
   box.classList.toggle("tall", b.dataset.shape === "tall");
   frame.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${b.dataset.id}?autoplay=1&rel=0&modestbranding=1&playsinline=1" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" title="video"></iframe>`;
@@ -215,6 +218,7 @@ document.addEventListener("keydown", (e) => {
 });
 $("#videos").addEventListener("click", openVideo);
 $("#slides").addEventListener("click", openVideo);
+$("#graphic").addEventListener("click", openVideo);
 
 /* slider controls: thumbs, progress-driven autoplay, pause on hover/focus/hidden, swipe, arrows */
 const slider = $("#slider");
@@ -299,6 +303,6 @@ document.addEventListener("click", (e) => {
   if (a.matches(".wa-link") || (a.href || "").includes("wa.me/") && !a.closest(".product")) track("whatsapp");
   else if (a.closest(".product")) track(a.classList.contains("primary") ? "buy" : "notify");
   else if (a.matches(".mail-link")) track("email");
-  else if (a.matches("button.thumb, button.thumb-cta")) track("video");
+  else if (a.matches("button.thumb, button.thumb-cta, .g-video")) track("video");
   else if (a.matches(".g-card, .behance-link")) track("behance");
 });

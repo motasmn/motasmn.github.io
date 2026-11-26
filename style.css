@@ -457,3 +457,10 @@ h2 { letter-spacing: -.01em; }
 
 @media (prefers-reduced-motion: reduce) { .mq-track { animation-duration: 120s; } }
 @media (hover: none) { .card::after, .product::after, .g-card::after { display: none; } }
+
+/* tall graphic cards (reel covers) — span two rows; cover thumbnails open their reel */
+.graphic { grid-auto-flow: dense; }
+.g-card.tall { grid-row: span 2; aspect-ratio: auto; }
+button.g-card { display: block; width: 100%; padding: 0; text-align: inherit; cursor: pointer; }
+.g-card .play { width: 54px; height: 54px; opacity: .92; z-index: 3; }
+.g-card:hover .play { transform: scale(1.1); }

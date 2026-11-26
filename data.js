@@ -7,6 +7,8 @@
    thumb = صورة الغلاف (assets/video)
    الفيديو الأول بالقائمة = الفيديو المميز بأول الصفحة */
 const VIDEOS = [
+  { id: "5tTOOUG0pyI", type: "motion", shape: "tall", thumb: "v7", ar: "الرف اللي قدّام عينك", en: "The Shelf in Front of Your Eyes", roleAr: "سلسلة سردّاد • موشن جرافيك", roleEn: "Sarddaad series • Motion Graphics" },
+  { id: "8CToh3Jvgwg", type: "motion", shape: "tall", thumb: "v6", ar: "ليش الأسعار بتخلص بـ99؟", en: "Why Prices End in .99", roleAr: "سلسلة سردّاد • موشن جرافيك", roleEn: "Sarddaad series • Motion Graphics" },
   { id: "aLlZvtC4z5c", type: "motion", shape: "tall", thumb: "v4", ar: "مراحل المونتاج — الحلقة ١", en: "Editing Stages — Ep. 1", roleAr: "كتابة • مونتاج • موشن", roleEn: "Script • Edit • Motion" },
   { id: "O2lhqY7skkA", type: "motion", shape: "tall", thumb: "v2", ar: "افهم قبل ما تقص", en: "Understand Before You Cut", roleAr: "مونتاج • موشن جرافيك", roleEn: "Edit • Motion Graphics" },
   { id: "HkuNkc4wdu8", type: "edit",   shape: "tall", thumb: "v3", ar: "لستَ مطالباً بالكمال", en: "You Don't Have to Be Perfect", roleAr: "تصوير • مونتاج", roleEn: "Filming • Edit" },
@@ -24,13 +26,16 @@ const FEATURED = [
 /* الجرافيك ديزاين — من Behance */
 const BEHANCE = "https://www.behance.net/motasamnemrawei";
 const GRAPHIC = [
-  /* مرتبة من الأقوى للأضعف */
+  /* مرتبة من الأقوى للأضعف — shape "tall" = غلاف ريل، video = بيشغّل الريل */
+  { id: "sard-ep01-1", shape: "tall", video: "8CToh3Jvgwg", ar: "غلاف ريل — دماغك شاف 9", en: "Reel Cover — Your Brain Saw 9" },
   { id: "251559283", slug: "_",    ar: "كراج تصليح السيارات",        en: "Car Repair Garage" },
   { id: "252242653", slug: "_",    ar: "مانجا طبيعي",                en: "Natural Mango" },
   { id: "252201773", slug: "_",    ar: "ميلك شيك",                   en: "Milkshake" },
   { id: "251873503", slug: "Iced-latte", ar: "آيس لاتيه",           en: "Iced Latte" },
+  { id: "sard-ep01-2", shape: "tall", video: "8CToh3Jvgwg", ar: "غلاف ريل — الدماغ عليه سعر", en: "Reel Cover — A Price on the Brain" },
   { id: "247653955", slug: "Burger-Restaurant-Social-Media-Visual-Identity", ar: "هوية مطعم برجر", en: "Burger Restaurant Identity" },
   { id: "248387591", slug: "_",    ar: "موجودين بكل مكان",           en: "We're Everywhere" },
+  { id: "sard-ep01-3", shape: "tall", video: "8CToh3Jvgwg", ar: "غلاف ريل — إيد وسعر", en: "Reel Cover — Hand & Price" },
   { id: "251874543", slug: "_",    ar: "يلا نروق",                   en: "Let's Chill" },
   { id: "248387501", slug: "_",    ar: "أكيد جوعان",                 en: "You Must Be Hungry" },
   { id: "252201793", slug: "_",    ar: "هوية بصرية",                 en: "Visual Identity" },
