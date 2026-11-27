@@ -7,7 +7,7 @@
    thumb = صورة الغلاف (assets/video)
    الفيديو الأول بالقائمة = الفيديو المميز بأول الصفحة */
 const VIDEOS = [
-  { id: "5tTOOUG0pyI", type: "motion", shape: "tall", thumb: "v7", ar: "الرف اللي قدّام عينك", en: "The Shelf in Front of Your Eyes", roleAr: "سلسلة سردّاد • موشن جرافيك", roleEn: "Sarddaad series • Motion Graphics" },
+  { id: "RNFH9c0QHDE", type: "motion", shape: "tall", thumb: "v7", ar: "الرف اللي قدّام عينك", en: "The Shelf in Front of Your Eyes", roleAr: "سلسلة سردّاد • موشن جرافيك", roleEn: "Sarddaad series • Motion Graphics" },
   { id: "8CToh3Jvgwg", type: "motion", shape: "tall", thumb: "v6", ar: "ليش الأسعار بتخلص بـ99؟", en: "Why Prices End in .99", roleAr: "سلسلة سردّاد • موشن جرافيك", roleEn: "Sarddaad series • Motion Graphics" },
   { id: "aLlZvtC4z5c", type: "motion", shape: "tall", thumb: "v4", ar: "مراحل المونتاج — الحلقة ١", en: "Editing Stages — Ep. 1", roleAr: "كتابة • مونتاج • موشن", roleEn: "Script • Edit • Motion" },
   { id: "O2lhqY7skkA", type: "motion", shape: "tall", thumb: "v2", ar: "افهم قبل ما تقص", en: "Understand Before You Cut", roleAr: "مونتاج • موشن جرافيك", roleEn: "Edit • Motion Graphics" },
